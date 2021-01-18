@@ -1,5 +1,0 @@
-Django
-requests
-mysqlclient
-django-sass-processor
-djangorestframework
