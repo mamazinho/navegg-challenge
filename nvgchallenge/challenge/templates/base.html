@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>Navegg Challenge</title>
+        <!-- <link rel="stylesheet" href="scss/main.scss" /> -->
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+        <!-- App declaration -->
+        <script src="static/js/challenge.js"></script>
+
+        <!-- Factories -->
+        <script src="static/js/fctr/httpFctr.js"></script>
+
+        <!-- Controllers-->
+        <script src="static/js/ctrl/sitesCtrl.js"></script>
+        <script src="static/js/ctrl/channelsCtrl.js"></script>
+
+    </head>
+
+    <body id="challenge" ng-app="challenge" dragover>
+        <!-- <section ng-if="active_tab=='sites'" ng-include="templates/sites.html" id="challenge"></section>
+        <section ng-if="active_tab=='channels'" ng-include="templates/channels.html" id="challenge"></section> -->
+        <div ng-include="sites.html" id="challenge"></div>
+        <!--<div ng-include="templates/channels.html" id="challenge"></div> -->
+    </body>
+</html>
