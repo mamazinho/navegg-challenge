@@ -4,7 +4,7 @@
         <button ng-click="openCreateModal=true">Create new site</button>
     </div>
 
-    <div class="modal" ng-if="openCreateModal">
+    <div class="modal" ng-show="openCreateModal">
         <h5>Create Site Modal</h5>
         <form id="createSite">
             <input ng-model="createSite.name" type="text" placeholder="Site name" required>
@@ -23,7 +23,7 @@
         </form>
     </div>
 
-    <div class="modal" ng-if="openEditModal">
+    <div class="modal" ng-show="openEditModal">
         <h5>Edit Site Modal</h5>
         <form id="editSite">
             <input ng-model="editSite.name" type="text" placeholder="Site name" required>

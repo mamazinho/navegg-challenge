@@ -1,10 +1,11 @@
 <section class="content" ng-controller="ChannelsCtrl">
+
     <span>This tab shows the channels that was asked in Front-end challenge, here you can crete, update and delete a channel and see your children</span>
     <div class="buttons">
         <button ng-click="openCreateModal=true">Create new channel</button>
     </div>
 
-    <div class="modal" ng-if="openCreateModal">
+    <div class="modal" ng-show="openCreateModal">
         <h5>Create Site Modal</h5>
         <form id="createChannel">
             <input ng-model="createChannel.name" type="text" placeholder="Channel name" required>
@@ -24,7 +25,7 @@
         </form>
     </div>
 
-    <div class="modal" ng-if="openEditModal">
+    <div class="modal" ng-show="openEditModal">
         <h5>Edit Site Modal</h5>
         <form id="editChannel">
             <input ng-model="editChannel.name" type="text" placeholder="Channel name" required>
@@ -43,6 +44,23 @@
             <button ng-click="updateChannel()">Update</button>
         </form>
     </div>
+    
+    <script type="text/ng-template" id="tree_item_renderer.html">
+        <td style="cursor: pointer;" ng-click="viewChilds(channel.id)">seta</td>
+        <td>{[channel.id]}</td>
+        <td>{[ channel.name ]}</td>
+        <td>{[ channel.users ]}</td>
+        <td>{[ channel.parent ]}</td>
+        <td>{[ channel.percent ]}</td>
+        <td>{[ channel.status ]}</td>
+        <td style="cursor: pointer;" ng-click="editModal(channel)">Edit</td>
+        <td style="cursor: pointer;" ng-click="deleteChannel(channel.id)">Delete</td>
+        <td ng-show="treeIds.includes(channel.id)">
+            <table style="margin-left: 20px">
+                <tr ng-repeat="channel in channel.childs" ng-include="'tree_item_renderer.html'"></tr>
+            </table>
+        </td>
+    </script>
 
     <table>
         <thead>
@@ -56,38 +74,8 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat-start="channel in channels track by $index">
-                <td ng-click="viewChilds(channel.id)">seta</td>
-                <td>{[ channel.id ]}</td>
-                <td>{[ channel.name ]}</td>
-                <td>{[ channel.users ]}</td>
-                <td>{[ channel.parent ]}</td>
-                <td>{[ channel.percent ]}</td>
-                <td>{[ channel.status ]}</td>
-                <td style="cursor: pointer;" ng-click="editModal(channel)">Edit</td>
-                <td style="cursor: pointer;" ng-click="deleteChannel(channel.id)">Delete</td>
-            </tr>
-            <tr>
-                <td colspan='2' ng-show="inChilds">
-                    <table class="subTable">
-                        <tbody>
-                            <tr ng-repeat="child in channelSelected.childs" ng-if="channel.id == channelSelected.id || channelSelected.id == child.parent">
-                                <td>{[channelSelected.id]}</td>
-                                <td>{[child.id]}</td>
-                                <td ng-click="viewChilds(child.id)">seta</td>
-                                <td>{[ child.name ]}</td>
-                                <td>{[ child.users ]}</td>
-                                <td>{[ child.parent ]}</td>
-                                <td>{[ child.percent ]}</td>
-                                <td>{[ child.status ]}</td>
-                                <td style="cursor: pointer;" ng-click="editModal(channel)">Edit</td>
-                                <td style="cursor: pointer;" ng-click="deleteChannel(channel.id)">Delete</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </td>
-            </tr>
-            <tr ng-repeat-end=""></tr>
+            <tr ng-repeat="channel in channels track by $index" ng-include="'tree_item_renderer.html'"></tr>
         </tbody>
     </table>
+
 </section>

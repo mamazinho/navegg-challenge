@@ -4,7 +4,8 @@ challenge.controller('ChannelsCtrl', function($scope, HttpFctr){
     $scope.channels = []
     $scope.data = []
     $scope.inChilds = false
-    $scope.channelSelected = {}
+    $scope.treeIds = []
+    $scope.selectedChannels = {}
     $scope.lastChannelId = 0
     $scope.openCreateModal = false
     $scope.openEditModal = false
@@ -76,7 +77,7 @@ challenge.controller('ChannelsCtrl', function($scope, HttpFctr){
   $scope.createDependencies = function() {
     $scope.data.forEach(each => {
       each['childs'] = $scope.data.filter(filtered => {
-        return filtered.parent === each.id
+        return filtered.parent == each.id
       })
     })
 
@@ -88,16 +89,15 @@ challenge.controller('ChannelsCtrl', function($scope, HttpFctr){
   }
 
   $scope.viewChilds = function(channelId) {
-    $scope.channelSelected = $scope.data.filter(filtered => {
-      return filtered.id === channelId
-    })[0]
-
-    if ($scope.lastChannelId == channelId)
-      $scope.inChilds = !$scope.inChilds
-    else
-      $scope.inChilds = true
+    if (!$scope.treeIds.includes(channelId)) {
+      var child = ($scope.data.filter(filtered => filtered.id == channelId)[0])
+      $scope.treeIds.push(child['id'])
+      $scope.selectedChannels[child['id']] = child
+    } else {
+      $scope.treeIds.splice($scope.treeIds.findIndex((channel) => channel == channelId), 1)
+      delete $scope.selectedChannels[channelId]
+    }
     
-    console.log('vieww', $scope.inChilds)
     $scope.lastChannelId = channelId
   }      
 
