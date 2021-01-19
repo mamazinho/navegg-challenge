@@ -13,7 +13,9 @@
 ## How to Setup:
     $ workon nvgc
     $ pip install -r requirements.txt
-    $ python manage.py migrate	
+    $ python manage.py migrate
+    $ python manage.py populateSites
+    $ python manage.py populateChannels
 
 ## How to Run:
     $ python manage.py runserver

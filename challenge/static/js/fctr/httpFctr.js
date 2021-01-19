@@ -12,7 +12,6 @@
             responseType: 'json',
             headers: {  
                 'Content-Type': infos.noContentType ? undefined : 'application/json',
-                'Accept': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
             },
             timeout: q.promise,
         }).then(

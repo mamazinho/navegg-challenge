@@ -19,7 +19,7 @@ from django.urls import path, include
 from challenge.views import Challenge
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    # path('api/', include('challenge.urls_api')),
     path('', Challenge.as_view(), name='challenge'),
+    path('admin/', admin.site.urls),
+    path('api/', include('challenge.urls_api')),
 ]

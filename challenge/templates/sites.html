@@ -1,0 +1,67 @@
+<section class="content" ng-controller="SitesCtrl">
+    <span>This tab shows the sites that was asked in Back-end challenge, here you can crete, update and delete a site</span>
+    <div class="buttons">
+        <button ng-click="openCreateModal=true">Create new site</button>
+    </div>
+
+    <div class="modal" ng-if="openCreateModal">
+        <h5>Create Site Modal</h5>
+        <form id="createSite">
+            <input ng-model="createSite.name" type="text" placeholder="Site name" required>
+            <input ng-model="createSite.urls" type="text" placeholder="URLs (for more than one, separate by ';')" required>
+            <input ng-model="createSite.categories" type="text" placeholder="Categories (for more than one, separate by ';')" required>
+            <label>
+                <input name="status" ng-model="createSite.status" type="radio" value="active" required>
+                Active
+            </label>
+            <label>
+                <input name="status" ng-model="createSite.status" type="radio" value="inactive" required>
+                Inactive
+            </label>
+
+            <button ng-click="createNewSite()">Create</button>
+        </form>
+    </div>
+
+    <div class="modal" ng-if="openEditModal">
+        <h5>Edit Site Modal</h5>
+        <form id="editSite">
+            <input ng-model="editSite.name" type="text" placeholder="Site name" required>
+            <input ng-model="editSite.urls" type="text" placeholder="URLs (for more than one, separate by ';')" required>
+            <input ng-model="editSite.categories" type="text" placeholder="Categories (for more than one, separate by ';')" required>
+            <label>
+                <input name="status" ng-model="editSite.status" type="radio" value="active" required>
+                Active
+            </label>
+            <label>
+                <input name="status" ng-model="editSite.status" type="radio" value="inactive" required>
+                Inactive
+            </label>
+
+            <button ng-click="updateSite()">Update</button>
+        </form>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Urls</th>
+                <th>Categories</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="site in sites track by $index">
+                <td>{[ site.id ]}</td>
+                <td>{[ site.name ]}</td>
+                <td ng-repeat="url in site.urls | split:';'">{[ url ]}</td>
+                <td ng-repeat="category in site.categories | split:';'">{[ category ]}</td>
+                <td>{[ site.status ]}</td>
+                <td style="cursor: pointer;" ng-click="editModal(site)">Edit</td>
+                <td style="cursor: pointer;" ng-click="deleteSite(site.id)">Delete</td>
+            </tr>
+        </tbody>
+    </table>
+</section>

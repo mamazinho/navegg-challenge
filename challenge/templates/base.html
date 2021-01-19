@@ -2,8 +2,13 @@
     <head>
         <title>Navegg Challenge</title>
         <!-- <link rel="stylesheet" href="scss/main.scss" /> -->
+        <!-- <link rel="stylesheet" href="scss/main.scss" /> -->
 
+        <!-- Libs -->
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="static/css/challenge.css">
 
         <!-- App declaration -->
         <script src="static/js/challenge.js"></script>
@@ -12,15 +17,30 @@
         <script src="static/js/fctr/httpFctr.js"></script>
 
         <!-- Controllers-->
+        <script src="static/js/ctrl/rootCtrl.js"></script>
         <script src="static/js/ctrl/sitesCtrl.js"></script>
         <script src="static/js/ctrl/channelsCtrl.js"></script>
 
+        <!-- Filters-->
+        <script src="static/js/fltr/splitFltr.js"></script>
+
     </head>
 
-    <body id="challenge" ng-app="challenge" dragover>
+    <body id="challenge" ng-app="challenge" ng-controller="RootCtrl" dragover>
         <!-- <section ng-if="active_tab=='sites'" ng-include="templates/sites.html" id="challenge"></section>
         <section ng-if="active_tab=='channels'" ng-include="templates/channels.html" id="challenge"></section> -->
-        <div ng-include="sites.html" id="challenge"></div>
-        <!--<div ng-include="templates/channels.html" id="challenge"></div> -->
+        <h3>Welcome to navegg challenge</h3>
+        <p>This platform put together both challenges, Back-End and Front-End. All CRUD proccess can be done in sites and channels</p>
+        <p>To change between tabs, click and the buttons below</p>
+        <div class="buttons">
+            <button ng-click="active_tab='sites'">Sites</button>
+            <button ng-click="active_tab='channels'">Channels</button>
+        </div>
+        <div ng-if="active_tab=='sites'">
+            {% include 'sites.html' %}
+        </div>
+        <div ng-if="active_tab=='channels'">
+            {% include 'channels.html' %}
+        </div>
     </body>
 </html>

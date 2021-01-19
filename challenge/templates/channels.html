@@ -1,0 +1,94 @@
+<section class="content" ng-controller="ChannelsCtrl">
+    <span>This tab shows the channels that was asked in Front-end challenge, here you can crete, update and delete a channel and see your children</span>
+    <div class="buttons">
+        <button ng-click="openCreateModal=true">Create new channel</button>
+    </div>
+
+    <div class="modal" ng-if="openCreateModal">
+        <h5>Create Site Modal</h5>
+        <form id="createChannel">
+            <input ng-model="createChannel.name" type="text" placeholder="Channel name" required>
+            <input ng-model="createChannel.users" type="number" placeholder="Users (visitors)" required>
+            <input ng-model="createChannel.parent" type="number" placeholder="Parent ID (if no parent leave it blank)">
+            <input ng-model="createChannel.percent" type="number" placeholder="Percent">
+            <label>
+                <input name="status" ng-model="createChannel.status" type="radio" value="Active" required>
+                Active
+            </label>
+            <label>
+                <input name="status" ng-model="createChannel.status" type="radio" value="Inactive" required>
+                Inactive
+            </label>
+
+            <button ng-click="createNewChannel()">Create</button>
+        </form>
+    </div>
+
+    <div class="modal" ng-if="openEditModal">
+        <h5>Edit Site Modal</h5>
+        <form id="editChannel">
+            <input ng-model="editChannel.name" type="text" placeholder="Channel name" required>
+            <input ng-model="editChannel.users" type="number" placeholder="Users (visitors)" required>
+            <input ng-model="editChannel.parent" type="number" placeholder="Parent ID (if no parent leave it blank)" required>
+            <input ng-model="editChannel.percent" type="number" placeholder="Percent" required>
+            <label>
+                <input name="status" ng-model="editChannel.status" type="radio" value="active" required>
+                Active
+            </label>
+            <label>
+                <input name="status" ng-model="editChannel.status" type="radio" value="inactive" required>
+                Inactive
+            </label>
+
+            <button ng-click="updateChannel()">Update</button>
+        </form>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Seta</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Users</th>
+                <th>Parent</th>
+                <th>Percent</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat-start="channel in channels track by $index">
+                <td ng-click="viewChilds(channel.id)">seta</td>
+                <td>{[ channel.id ]}</td>
+                <td>{[ channel.name ]}</td>
+                <td>{[ channel.users ]}</td>
+                <td>{[ channel.parent ]}</td>
+                <td>{[ channel.percent ]}</td>
+                <td>{[ channel.status ]}</td>
+                <td style="cursor: pointer;" ng-click="editModal(site)">Edit</td>
+                <td style="cursor: pointer;" ng-click="deleteChannel(site.id)">Delete</td>
+            </tr>
+            <tr>
+                <td colspan='2' ng-show="inChilds">
+                    <table class="subTable">
+                        <tbody>
+                            <tr ng-repeat="child in channelSelected.childs" ng-if="channel.id == channelSelected.id || channelSelected.id == child.parent">
+                                <td>{[channelSelected.id]}</td>
+                                <td>{[child.id]}</td>
+                                <td ng-click="viewChilds(child.id)">seta</td>
+                                <td>{[ child.name ]}</td>
+                                <td>{[ child.users ]}</td>
+                                <td>{[ child.parent ]}</td>
+                                <td>{[ child.percent ]}</td>
+                                <td>{[ child.status ]}</td>
+                                <td style="cursor: pointer;" ng-click="editModal(site)">Edit</td>
+                                <td style="cursor: pointer;" ng-click="deleteChannel(site.id)">Delete</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr ng-repeat-end=""></tr>
+        </tbody>
+    </table>
+</section>
