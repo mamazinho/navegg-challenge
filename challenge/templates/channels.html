@@ -32,11 +32,11 @@
             <input ng-model="editChannel.parent" type="number" placeholder="Parent ID (if no parent leave it blank)" required>
             <input ng-model="editChannel.percent" type="number" placeholder="Percent" required>
             <label>
-                <input name="status" ng-model="editChannel.status" type="radio" value="active" required>
+                <input name="status" ng-model="editChannel.status" type="radio" value="Active" required>
                 Active
             </label>
             <label>
-                <input name="status" ng-model="editChannel.status" type="radio" value="inactive" required>
+                <input name="status" ng-model="editChannel.status" type="radio" value="Inactive" required>
                 Inactive
             </label>
 
@@ -47,7 +47,6 @@
     <table>
         <thead>
             <tr>
-                <th>Seta</th>
                 <th>ID</th>
                 <th>Name</th>
                 <th>Users</th>
@@ -65,8 +64,8 @@
                 <td>{[ channel.parent ]}</td>
                 <td>{[ channel.percent ]}</td>
                 <td>{[ channel.status ]}</td>
-                <td style="cursor: pointer;" ng-click="editModal(site)">Edit</td>
-                <td style="cursor: pointer;" ng-click="deleteChannel(site.id)">Delete</td>
+                <td style="cursor: pointer;" ng-click="editModal(channel)">Edit</td>
+                <td style="cursor: pointer;" ng-click="deleteChannel(channel.id)">Delete</td>
             </tr>
             <tr>
                 <td colspan='2' ng-show="inChilds">
@@ -81,8 +80,8 @@
                                 <td>{[ child.parent ]}</td>
                                 <td>{[ child.percent ]}</td>
                                 <td>{[ child.status ]}</td>
-                                <td style="cursor: pointer;" ng-click="editModal(site)">Edit</td>
-                                <td style="cursor: pointer;" ng-click="deleteChannel(site.id)">Delete</td>
+                                <td style="cursor: pointer;" ng-click="editModal(channel)">Edit</td>
+                                <td style="cursor: pointer;" ng-click="deleteChannel(channel.id)">Delete</td>
                             </tr>
                         </tbody>
                     </table>
