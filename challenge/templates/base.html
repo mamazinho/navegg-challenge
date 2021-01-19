@@ -31,13 +31,13 @@
         <p>This platform put together both challenges, Back-End and Front-End. All CRUD proccess can be done in sites AND channels</p>
         <p>To change between tabs, click and the buttons below</p>
         <div class="buttons">
-            <button ng-click="active_tab='sites'">Sites</button>
-            <button ng-click="active_tab='channels'">Channels</button>
+            <button ng-class="{active: active_tab=='sites'}" ng-click="active_tab='sites'">Sites</button>
+            <button ng-class="{active: active_tab=='channels'}" ng-click="active_tab='channels'">Channels</button>
         </div>
         <div ng-if="active_tab=='sites'">
             {% include 'sites.html' %}
         </div>
-        <div ng-if="active_tab=='channels'">
+        <div class="active" ng-if="active_tab=='channels'">
             {% include 'channels.html' %}
         </div>
     </body>
