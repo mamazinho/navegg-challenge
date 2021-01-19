@@ -5,41 +5,11 @@
     </div>
 
     <div class="modal" ng-show="openCreateModal">
-        <h5>Create Site Modal</h5>
-        <form id="createSite">
-            <input ng-model="createSite.name" type="text" placeholder="Site name" required>
-            <input ng-model="createSite.urls" type="text" placeholder="URLs (for more than one, separate by ';')" required>
-            <input ng-model="createSite.categories" type="text" placeholder="Categories (for more than one, separate by ';')" required>
-            <label>
-                <input name="status" ng-model="createSite.status" type="radio" value="active" required>
-                Active
-            </label>
-            <label>
-                <input name="status" ng-model="createSite.status" type="radio" value="inactive" required>
-                Inactive
-            </label>
-
-            <button ng-click="createNewSite()">Create</button>
-        </form>
+        {% include 'modals/__createSite.html' %}
     </div>
 
     <div class="modal" ng-show="openEditModal">
-        <h5>Edit Site Modal</h5>
-        <form id="editSite">
-            <input ng-model="editSite.name" type="text" placeholder="Site name" required>
-            <input ng-model="editSite.urls" type="text" placeholder="URLs (for more than one, separate by ';')" required>
-            <input ng-model="editSite.categories" type="text" placeholder="Categories (for more than one, separate by ';')" required>
-            <label>
-                <input name="status" ng-model="editSite.status" type="radio" value="active" required>
-                Active
-            </label>
-            <label>
-                <input name="status" ng-model="editSite.status" type="radio" value="inactive" required>
-                Inactive
-            </label>
-
-            <button ng-click="updateSite()">Update</button>
-        </form>
+        {% include 'modals/__editSite.html' %}
     </div>
 
     <table>

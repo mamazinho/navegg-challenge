@@ -11,15 +11,17 @@ challenge.controller('ChannelsCtrl', function($scope, HttpFctr){
     $scope.openEditModal = false
     $scope.createChannel = {
       'name': '',
-      'urls': '',
-      'categories': '',
+      'users': '',
+      'parent': '',
+      'percent': '',
       'status': '',
     }
     $scope.editChannel = {
       'id': '',
       'name': '',
-      'urls': '',
-      'categories': '',
+      'users': '',
+      'parent': '',
+      'percent': '',
       'status': '',
     }
     $scope.getChannels()
@@ -44,13 +46,14 @@ challenge.controller('ChannelsCtrl', function($scope, HttpFctr){
     })
   }
 
-  $scope.editModal = function(Channel) {
+  $scope.editModal = function(channel) {
     $scope.openEditModal = true
-    $scope.editChannel.id = Channel.id
-    $scope.editChannel.name = Channel.name
-    $scope.editChannel.urls = Channel.urls
-    $scope.editChannel.categories = Channel.categories
-    $scope.editChannel.status = Channel.status
+    $scope.editChannel.id = channel.id
+    $scope.editChannel.name = channel.name
+    $scope.editChannel.users = channel.users
+    $scope.editChannel.parent = channel.parent
+    $scope.editChannel.percent = channel.percent
+    $scope.editChannel.status = channel.status
   }
 
   $scope.updateChannel = function() {
