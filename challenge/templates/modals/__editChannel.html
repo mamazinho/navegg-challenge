@@ -1,5 +1,5 @@
 <h4>Edit Site Modal</h4>
-<form id="editChannel">
+<form id="editChannel" class="edit">
     <label>
         <span>Name: </span>
         <input name="name" ng-model="editChannel.name" type="text" placeholder="Channel name" required>
@@ -28,6 +28,8 @@
         </label>
     </label><br>
 
-    <button ng-click="updateChannel()">Update</button>
-    <button ng-click="openEditModal=false">Cancel</button>
+    <div class="buttons">
+        <button class="create" ng-click="updateChannel()">Update</button>
+        <button class="cancel" ng-click="openEditModal=false">Cancel</button>
+    </div>
 </form>

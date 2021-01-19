@@ -1,5 +1,5 @@
 <h4>Edit Site Modal</h4>
-<form id="editSite">
+<form id="editSite" class="edit">
     <label>
         <span>Name: </span>
         <input name="name" ng-model="editSite.name" type="text" placeholder="Site name" required>
@@ -24,6 +24,8 @@
         </label>
     </label><br>
 
-    <button type="button" ng-click="updateSite()">Update</button>
-    <button type="button" ng-click="openEditModal=false">Cancel</button>
+    <div class="buttons">
+        <button class="create" type="button" ng-click="updateSite()">Update</button>
+        <button class="cancel" type="button" ng-click="openEditModal=false">Cancel</button>
+    </div>
 </form>

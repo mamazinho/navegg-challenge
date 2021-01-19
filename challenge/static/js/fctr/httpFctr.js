@@ -21,11 +21,7 @@
             function(error){
                 if(error.xhrStatus != 'abort' && (error.data && !error.data.messages))
                     console.error('HttpFctr HTTP ERROR >> ',JSON.stringify(error))
-                if(error.data && error.data.messages){
-                    for(var x =0; x< error.data.messages.length; x++){
-                        window.messages.error(error.data.messages[x])
-                    }
-                }
+                window.errorMessage = `${Object.keys(error.data)[0]}: ${error.data[Object.keys(error.data)[0].toString()]}`
                 q.reject(error)
             }
         )

@@ -3,7 +3,6 @@ challenge.controller('ChannelsCtrl', function($scope, HttpFctr){
   $scope.__init__ = function(){
     $scope.channels = []
     $scope.data = []
-    $scope.inChilds = false
     $scope.treeIds = []
     $scope.selectedChannels = {}
     $scope.lastChannelId = 0
@@ -42,7 +41,7 @@ challenge.controller('ChannelsCtrl', function($scope, HttpFctr){
       $scope.createChannel = {}
     }).catch((error) => {
       console.log('ERROR >>', error)
-      alert(error.statusText + ' Entrada duplicada')
+      alert(window.errorMessage)
     })
   }
 
@@ -64,7 +63,7 @@ challenge.controller('ChannelsCtrl', function($scope, HttpFctr){
       $scope.editChannel = {}
     }).catch((error) => {
       console.log('ERROR >>', error)
-      alert(error.statusText + ' Entrada duplicada')
+      alert(window.errorMessage)
     })
   }
 
@@ -73,13 +72,13 @@ challenge.controller('ChannelsCtrl', function($scope, HttpFctr){
       $scope.getChannels()
     }).catch((error) => {
       console.log('ERROR >>', error)
-      alert(error.statusText + ' Entrada duplicada')
+      alert(window.errorMessage)
     })
   }
 
   $scope.createDependencies = function() {
     $scope.data.forEach(each => {
-      each['childs'] = $scope.data.filter(filtered => {
+      each['children'] = $scope.data.filter(filtered => {
         return filtered.parent == each.id
       })
     })
@@ -91,7 +90,7 @@ challenge.controller('ChannelsCtrl', function($scope, HttpFctr){
     $scope.channels = fathers
   }
 
-  $scope.viewChilds = function(channelId) {
+  $scope.viewChildren = function(channelId) {
     if (!$scope.treeIds.includes(channelId)) {
       var child = ($scope.data.filter(filtered => filtered.id == channelId)[0])
       $scope.treeIds.push(child['id'])

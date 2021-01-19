@@ -1,12 +1,12 @@
 <h4>Create Site Modal</h4>
-<form id="createChannel">
+<form id="createChannel" class="create">
     <label>
         <span>Name: </span>
-        <input name="name" ng-model="createChannel.name" type="text" placeholder="Channel name" required>
+        <input name="name" ng-model="createChannel.name" type="text" placeholder="Channel name">
     </label><br>
     <label>
         <span>Users: </span>
-        <input name="users" ng-model="createChannel.users" type="number" placeholder="Users (visitors)" required>
+        <input name="users" ng-model="createChannel.users" type="number" placeholder="Users (visitors)">
     </label><br>
     <label>
         <span>Parent ID: </span>
@@ -19,15 +19,17 @@
     <label>
         <span>Status: </span>
         <label>
-            <input name="status" ng-model="createChannel.status" type="radio" value="Active" required>
+            <input name="status" ng-model="createChannel.status" type="radio" value="Active">
             Active
         </label>
         <label>
-            <input name="status" ng-model="createChannel.status" type="radio" value="Inactive" required>
+            <input name="status" ng-model="createChannel.status" type="radio" value="Inactive">
             Inactive
         </label>
     </label><br>
 
-    <button ng-click="createNewChannel()">Create</button>
-    <button ng-click="openCreateModal=false">Cancel</button>
+    <div class="buttons">
+        <button class="create" ng-click="createNewChannel()">Create</button>
+        <button class="cancel" ng-click="openCreateModal=false">Cancel</button>
+    </div>
 </form>

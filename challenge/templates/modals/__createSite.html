@@ -1,5 +1,5 @@
 <h4>Create Site Modal</h4>
-<form id="createSite">
+<form id="createSite" class="create">
     <label>
         <span>Name: </span>
         <input name="name" ng-model="createSite.name" type="text" placeholder="Site name" required>
@@ -15,15 +15,17 @@
     <label>
         <span>Status: </span>
         <label>
+            <span>Active</span>
             <input name="status" ng-model="createSite.status" type="radio" value="active" required>
-            Active
         </label>
         <label>
+            <span>Inactive</span>
             <input name="status" ng-model="createSite.status" type="radio" value="inactive" required>
-            Inactive
         </label>
-    </label><br>
+    </label>
 
-    <button ng-click="createNewSite()">Create</button>
-    <button ng-click="openCreateModal=false">Cancel</button>
+    <div class="buttons">
+        <button class="create" ng-click="createNewSite()">Create</button>
+        <button class="cancel" ng-click="openCreateModal=false">Cancel</button>
+    </div>
 </form>

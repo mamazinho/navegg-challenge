@@ -25,6 +25,7 @@ challenge.controller('SitesCtrl', function($scope, HttpFctr){
       $scope.sites = response
     }).catch((error) => {
       console.log('ERROR >>', error)
+      alert(window.errorMessage)
     })
   }
 
@@ -36,7 +37,7 @@ challenge.controller('SitesCtrl', function($scope, HttpFctr){
       $scope.createSite = {}
     }).catch((error) => {
       console.log('ERROR >>', error)
-      alert(error.statusText + ' Entrada duplicada')
+      alert(window.errorMessage)
     })
   }
 
@@ -57,7 +58,7 @@ challenge.controller('SitesCtrl', function($scope, HttpFctr){
       $scope.editSite = {}
     }).catch((error) => {
       console.log('ERROR >>', error)
-      alert(error.statusText + ' Entrada duplicada')
+      alert(window.errorMessage)
     })
   }
 
@@ -66,7 +67,7 @@ challenge.controller('SitesCtrl', function($scope, HttpFctr){
       $scope.getSites()
     }).catch((error) => {
       console.log('ERROR >>', error)
-      alert(error.statusText + ' Entrada duplicada')
+      alert(window.errorMessage)
     })
   }
 
