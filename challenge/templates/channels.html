@@ -13,35 +13,23 @@
         {% include 'modals/__editChannel.html' %}
     </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Users</th>
-                <th>Parent</th>
-                <th>Percent</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody class="main-table" ng-repeat="channel in channels track by $index" ng-include="'tree_item_renderer.html'"></tbody>
-    </table>
+    <div class="group">
+        <ul class="main-table" ng-repeat="channel in channels track by $index" ng-include="'tree_item_renderer.html'"></ul>
+    </div>
 
 </section>
 
 <script type="text/ng-template" id="tree_item_renderer.html">
-    <tr>
-        <td style="cursor: pointer;" ng-click="viewChildren(channel.id)"><span ng-if="channel.children.length > 0">&#10148;</span></td>
-        <td>{[ channel.name ]}
-            <div ng-show="treeIds.includes(channel.id)">
-                <table>
-                    <tbody class="main-table" ng-repeat="channel in channel.children" ng-include="'tree_item_renderer.html'"></tbody>
-                </table>
-            </div>
-        </td>
-        <td><span>{[ channel.users ]}</span></td>
-        <td><span>{[ channel.parent ]}</span></td>
-        <td><span>{[ channel.percent ]}</span></td>
-        <td><span>{[ channel.status ]}</span></td>
-    </tr>
+    <ul>
+        <li style="cursor: pointer;" ng-click="viewChildren(channel.id)"><span ng-if="channel.children.length > 0">&#10148;</span></li>
+        <li>{[ channel.name ]}</li>
+        <li>Users ({[ channel.users ]})</li>
+        <li>Percent ({[ channel.percent ]})</li>
+        <li>Parent ID ({[ channel.parent ]})</li>
+        <li ng-click="editModal(channel)"><button>Edit</button></li>
+        <li ng-click="deleteChannel(channel.id)"><button>Delete</button></li>
+        <li ng-show="treeIds.includes(channel.id)">
+            <ul class="main-table" ng-repeat="channel in channel.children" ng-include="'tree_item_renderer.html'"></ul>
+        </li>
+    </ul>
 </script>
