@@ -28,3 +28,6 @@ You can find how make your setup and run the project in your Linux machine in th
 
 ## How to Run:
     $ python manage.py runserver
+
+## How to access:
+    Your terminal will show an address that looks like 'http://127.0.0.1:[port number]', just put this address in your browser and use it.
