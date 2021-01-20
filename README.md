@@ -1,11 +1,20 @@
-## Install virtualenvwrapper:
+This application makes part of Navegg's challenge, it solves both challenges, back-end and front-end
+
+## Technologies
+* Django
+* Django Rest framework
+* AngularJs
+
+You can find how make your setup and run the project in your Linux machine in the text below:
+
+## Install virtualenvwrapper and create a virtualenv:
     $ sudo apt-get install python-pip
     $ pip install --upgrade virtualenv
     $ sudo apt-get install python3 python3-pip virtualenvwrapper libmysqlclient-dev libsnappy-dev gcc libssl-dev
     $ source /etc/bash_completion.d/virtualenvwrapper
     $ mkvirtualenv -p /usr/bin/python3 nvgc
 
-## How to DB:
+## How to create DB:
     $ sudo mysql -e "CREATE DATABASE navegg"
     $ sudo mysql -e "CREATE USER navegg IDENTIFIED BY 'n4v3gg'"
     $ sudo mysql -e "GRANT ALL ON navegg.* TO 'navegg'@'%' IDENTIFIED BY 'n4v3gg'"
