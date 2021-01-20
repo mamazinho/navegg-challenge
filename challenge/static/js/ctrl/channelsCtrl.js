@@ -4,8 +4,6 @@ challenge.controller('ChannelsCtrl', function($scope, HttpFctr){
     $scope.channels = []
     $scope.data = []
     $scope.treeIds = []
-    $scope.selectedChannels = {}
-    $scope.lastChannelId = 0
     $scope.openCreateModal = false
     $scope.openEditModal = false
     $scope.createChannel = {
@@ -26,6 +24,7 @@ challenge.controller('ChannelsCtrl', function($scope, HttpFctr){
     $scope.getChannels()
   }
 
+  // Get the Channels from API
   $scope.getChannels = function() {
     HttpFctr('channels', 'GET').then(function(response){
       $scope.data = response
@@ -33,6 +32,7 @@ challenge.controller('ChannelsCtrl', function($scope, HttpFctr){
     })
   }
 
+  // Create new Channels on API
   $scope.createNewChannel = function() {
     var data = JSON.stringify($scope.createChannel)
     HttpFctr('channels', 'POST', {data}).then(function(){
@@ -43,16 +43,6 @@ challenge.controller('ChannelsCtrl', function($scope, HttpFctr){
       console.log('ERROR >>', error)
       alert(window.errorMessage)
     })
-  }
-
-  $scope.editModal = function(channel) {
-    $scope.openEditModal = true
-    $scope.editChannel.id = channel.id
-    $scope.editChannel.name = channel.name
-    $scope.editChannel.users = channel.users
-    $scope.editChannel.parent = channel.parent
-    $scope.editChannel.percent = channel.percent
-    $scope.editChannel.status = channel.status
   }
 
   $scope.updateChannel = function() {
@@ -90,17 +80,23 @@ challenge.controller('ChannelsCtrl', function($scope, HttpFctr){
     $scope.channels = fathers
   }
 
+  $scope.editModal = function(channel) {
+    $scope.openEditModal = true
+    $scope.editChannel.id = channel.id
+    $scope.editChannel.name = channel.name
+    $scope.editChannel.users = channel.users
+    $scope.editChannel.parent = channel.parent
+    $scope.editChannel.percent = channel.percent
+    $scope.editChannel.status = channel.status
+  }
+
   $scope.viewChildren = function(channelId) {
     if (!$scope.treeIds.includes(channelId)) {
       var child = ($scope.data.filter(filtered => filtered.id == channelId)[0])
       $scope.treeIds.push(child['id'])
-      $scope.selectedChannels[child['id']] = child
     } else {
       $scope.treeIds.splice($scope.treeIds.findIndex((channel) => channel == channelId), 1)
-      delete $scope.selectedChannels[channelId]
     }
-    
-    $scope.lastChannelId = channelId
   }      
 
   $scope.__init__()

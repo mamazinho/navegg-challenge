@@ -27,18 +27,22 @@
     </head>
 
     <body id="challenge" ng-app="challenge" ng-controller="RootCtrl">
-        <h3>Welcome to navegg challenge</h3>
-        <p>This platform put together both challenges, Back-End and Front-End. All CRUD proccess can be done in sites AND channels</p>
-        <p>To change between tabs, click and the buttons below</p>
-        <div class="buttons">
-            <button ng-class="{active: active_tab=='sites'}" ng-click="active_tab='sites'">Sites</button>
-            <button ng-class="{active: active_tab=='channels'}" ng-click="active_tab='channels'">Channels</button>
-        </div>
-        <div ng-if="active_tab=='sites'">
+        <section class="container">
+            <h3>Welcome to navegg challenge</h3>
+            <p>This platform put together both challenges, Back-End and Front-End. All CRUD proccess can be done in sites AND channels</p>
+            <p>To change between tabs, click and the buttons below</p>
+            <div class="buttons">
+                <button ng-class="{main: active_tab=='sites'}" ng-click="active_tab='sites'">Sites</button>
+                <button ng-class="{main: active_tab=='channels'}" ng-click="active_tab='channels'">Channels</button>
+            </div>
+        </section>
+
+        <section class="container" ng-if="active_tab=='sites'">
             {% include 'sites.html' %}
-        </div>
-        <div class="active" ng-if="active_tab=='channels'">
+        </section>
+
+        <section class="container" ng-if="active_tab=='channels'">
             {% include 'channels.html' %}
-        </div>
+        </section>
     </body>
 </html>

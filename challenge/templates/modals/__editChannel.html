@@ -1,21 +1,21 @@
 <h4>Edit Site Modal</h4>
-<form id="editChannel" class="edit">
+<form id="editChannel">
     <label>
         <span>Name: </span>
         <input name="name" ng-model="editChannel.name" type="text" placeholder="Channel name" required>
-    </label><br>
-    <label>
-        <span>Users: </span>
-        <input name="users" ng-model="editChannel.users" type="number" placeholder="Users (visitors)" required>
-    </label><br>
+    </label>
     <label>
         <span>Parend ID: </span>
         <input name="parent" ng-model="editChannel.parent" type="number" placeholder="Parent ID (if no parent put 0)" required>
-    </label><br>
+    </label>
+    <label>
+        <span>Users: </span>
+        <input name="users" ng-model="editChannel.users" type="number" placeholder="Users (visitors)" required>
+    </label>
     <label>
         <span>Percent: </span>
         <input name="percent" ng-model="editChannel.percent" type="number" placeholder="Percent (Just the number, without '%')" required>
-    </label><br>
+    </label>
     <label>
         <span>Status: </span>
         <label>
@@ -25,10 +25,10 @@
             <input name="status" ng-model="editChannel.status" type="radio" value="Inactive" required>Inactive
             
         </label>
-    </label><br>
+    </label>
 
     <div class="buttons">
-        <button class="create" ng-click="updateChannel()">Update</button>
+        <button class="main" ng-click="updateChannel()">Update</button>
         <button class="cancel" ng-click="openEditModal=false">Cancel</button>
     </div>
 </form>

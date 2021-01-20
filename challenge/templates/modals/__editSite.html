@@ -1,17 +1,17 @@
 <h4>Edit Site Modal</h4>
-<form id="editSite" class="edit">
+<form id="editSite">
     <label>
         <span>Name: </span>
         <input name="name" ng-model="editSite.name" type="text" placeholder="Site name" required>
-    </label><br>
+    </label>
     <label>
         <span>URLs: </span>
         <input name="urls" ng-model="editSite.urls" type="text" placeholder="URLs (for more than one, separate by ';')" required>
-    </label><br>
+    </label>
     <label>
         <span>Categories: </span>
         <input name="categories" ng-model="editSite.categories" type="text" placeholder="Categories (for more than one, separate by ';')" required>
-    </label><br>
+    </label>
     <label>
         <span>Status: </span>
         <label>
@@ -20,10 +20,10 @@
         <label>
             <input name="status" ng-model="editSite.status" type="radio" value="inactive" required>Inactive
         </label>
-    </label><br>
+    </label>
 
     <div class="buttons">
-        <button class="create" type="button" ng-click="updateSite()">Update</button>
+        <button class="main" type="button" ng-click="updateSite()">Update</button>
         <button class="cancel" type="button" ng-click="openEditModal=false">Cancel</button>
     </div>
 </form>

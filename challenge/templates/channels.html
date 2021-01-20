@@ -1,35 +1,54 @@
 <section class="content" ng-controller="ChannelsCtrl">
 
-    <span>This tab shows the channels that was asked in Front-end challenge, here you can crete, update and delete a channel and see your children</span>
+    <p>This tab shows the channels that was asked in Front-end challenge. Here you can create, update and delete a channel and see your children</p>
+    <p>You can change parents, users, percents and even name</p>
+
     <div ng-show="openCreateModal==false" class="buttons">
-        <button ng-click="openCreateModal=true">Create new channel</button>
+        <button class="main" ng-click="openCreateModal=true">Create new channel</button>
     </div>
 
     <div class="modal" ng-show="openCreateModal">
-        {% include 'modals/__createChannel.html' %}
+        <div class="overlay" ng-click="openCreateModal=false"></div>
+        <div class="content">
+            {% include 'modals/__createChannel.html' %}
+        </div>
     </div>
 
     <div class="modal" ng-show="openEditModal">
-        {% include 'modals/__editChannel.html' %}
+        <div class="overlay" ng-click="openEditModal=false"></div>
+        <div class="content">
+            {% include 'modals/__editChannel.html' %}
+        </div>
     </div>
 
-    <div class="group">
-        <ul class="main-table" ng-repeat="channel in channels track by $index" ng-include="'tree_item_renderer.html'"></ul>
+    <div class="box">
+        <ul class="header">
+            <li class="arrow"></li>
+            <li>ID</li>
+            <li>name</li>
+            <li>users</li>
+            <li>percent</li>
+            <li>parent</li>
+            <li>action</li>
+            <li>action</li>
+        </ul>
+        <div class="channel_list" ng-repeat="channel in channels track by $index" ng-include="'tree_item_renderer.html'"></div>
     </div>
 
 </section>
 
 <script type="text/ng-template" id="tree_item_renderer.html">
-    <ul>
-        <li style="cursor: pointer;" ng-click="viewChildren(channel.id)"><span ng-if="channel.children.length > 0">&#10148;</span></li>
-        <li>{[ channel.name ]}</li>
+    <ul ng-class="{child: channel.parent}">
+        <li class="arrow" ng-click="viewChildren(channel.id)"><span ng-if="channel.children.length > 0">&#10148;</span></li>
+        <li>{[ channel.id ]}</li>
+        <li class="name">{[ channel.name ]}</li>
         <li>Users ({[ channel.users ]})</li>
         <li>Percent ({[ channel.percent ]})</li>
         <li>Parent ID ({[ channel.parent ]})</li>
-        <li ng-click="editModal(channel)"><button>Edit</button></li>
-        <li ng-click="deleteChannel(channel.id)"><button>Delete</button></li>
-        <li ng-show="treeIds.includes(channel.id)">
-            <ul class="main-table" ng-repeat="channel in channel.children" ng-include="'tree_item_renderer.html'"></ul>
-        </li>
+        <li class="btn" ng-click="editModal(channel)"><img src="static/img/edit.png" width="22"/></li>
+        <li class="btn" ng-click="deleteChannel(channel.id)"><img src="static/img/delete.png" width="22"/></li>
     </ul>
+    <div ng-show="treeIds.includes(channel.id)">
+        <div ng-repeat="channel in channel.children" ng-include="'tree_item_renderer.html'"></div>
+    </div>
 </script>

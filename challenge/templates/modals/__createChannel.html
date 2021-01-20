@@ -1,21 +1,21 @@
 <h4>Create Site Modal</h4>
-<form id="createChannel" class="create">
+<form id="createChannel">
     <label>
         <span>Name: </span>
         <input name="name" ng-model="createChannel.name" type="text" placeholder="Channel name">
-    </label><br>
+    </label>
+    <label>
+        <span>Parent ID: </span>
+        <input name="parent" ng-model="createChannel.parent" type="number" placeholder="Parent ID (if no parent put 0)">
+    </label>
     <label>
         <span>Users: </span>
         <input name="users" ng-model="createChannel.users" type="number" placeholder="Users (visitors)">
-    </label><br>
-    <label>
-        <span>Parent ID: </span>
-        <input name="parent" ng-model="createChannel.parent" type="number" placeholder="Parent ID (if no parent leave it blank)">
-    </label><br>
+    </label>
     <label>
         <span>Percent: </span>
         <input name="percent" ng-model="createChannel.percent" type="number" placeholder="Percent">
-    </label><br>
+    </label>
     <label>
         <span>Status: </span>
         <label>
@@ -24,10 +24,10 @@
         <label>
             <input name="status" ng-model="createChannel.status" type="radio" value="Inactive">Inactive
         </label>
-    </label><br>
+    </label>
 
     <div class="buttons">
-        <button class="create" ng-click="createNewChannel()">Create</button>
+        <button class="main" ng-click="createNewChannel()">Create</button>
         <button class="cancel" ng-click="openCreateModal=false">Cancel</button>
     </div>
 </form>
