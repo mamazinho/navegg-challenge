@@ -17,6 +17,7 @@ class Command(BaseCommand):
         reader = csv.DictReader(csv_file, delimiter=',')
 
         # Reading each csv line
+        print("Reading CSV file...\n")
         for line in reader:
 
             site = Site(
@@ -29,3 +30,5 @@ class Command(BaseCommand):
 
         # Save in database
         Site.objects.bulk_create(to_create, ignore_conflicts=True)
+
+        print("Process completed successfully")

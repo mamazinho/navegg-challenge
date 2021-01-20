@@ -42,9 +42,9 @@
         <li class="arrow" ng-click="viewChildren(channel.id)"><span ng-if="channel.children.length > 0">&#10148;</span></li>
         <li>{[ channel.id ]}</li>
         <li class="name">{[ channel.name ]}</li>
-        <li>Users ({[ channel.users ]})</li>
-        <li>Percent ({[ channel.percent ]})</li>
-        <li>Parent ID ({[ channel.parent ]})</li>
+        <li>{[ channel.users ]}</li>
+        <li>{[ channel.percent ]}</li>
+        <li>{[ channel.parent ]}</li>
         <li class="btn" ng-click="editModal(channel)"><img src="static/img/edit.png" width="22"/></li>
         <li class="btn" ng-click="deleteChannel(channel.id)"><img src="static/img/delete.png" width="22"/></li>
     </ul>
