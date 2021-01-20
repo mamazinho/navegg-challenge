@@ -15,6 +15,7 @@ You can find how make your setup and run the project in your Linux machine in th
     $ mkvirtualenv -p /usr/bin/python3 nvgc
 
 ## How to create DB:
+    $ sudo apt install mysql-server
     $ sudo mysql -e "CREATE DATABASE navegg"
     $ sudo mysql -e "CREATE USER navegg IDENTIFIED BY 'n4v3gg'"
     $ sudo mysql -e "GRANT ALL ON navegg.* TO 'navegg'@'%' IDENTIFIED BY 'n4v3gg'"
